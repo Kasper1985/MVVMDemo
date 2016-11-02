@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MVVMDemo.Views"
+             xmlns:data="clr-namespace:MVVMDemo.Model"
              xmlns:viewModel="clr-namespace:MVVMDemo.ViewModel"
              xmlns:vml="clr-namespace:MVVMDemo.VML"
              vml:ViewModelLocator.AutoHookedUpViewModel="True"
@@ -14,9 +15,22 @@
     <!--<UserControl.DataContext> 
         <viewModel:StudentViewModel/>
     </UserControl.DataContext> -->
+
+
+    <UserControl.Resources>
+        <!--<DataTemplate x:Key="studentsTemplate">-->
+        <DataTemplate DataType="{x:Type data:Student}">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding Path=FirstName, Mode=TwoWay}" Width="100" Margin="3,5,3,5"/>
+                <TextBox Text="{Binding Path=LastName, Mode=TwoWay}" Width="100" Margin="0,5,3,5"/>
+                <TextBox Text="{Binding Path=FullName, Mode=OneWay}" Margin="0,5,3,5" BorderThickness="0"/>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
     
     <Grid>
-        <StackPanel HorizontalAlignment="Left">
+        <!--<StackPanel HorizontalAlignment="Left">
             <ItemsControl ItemsSource="{Binding Path=Students}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -28,6 +42,9 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </StackPanel>
+        </StackPanel>-->
+        <!--<ListBox ItemsSource="{Binding Path=Students}" ItemTemplate="{StaticResource studentsTemplate}"/>-->
+        <ListBox ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}"/>
+        <Button Content="Delete" Command="{Binding DeleteCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </UserControl>

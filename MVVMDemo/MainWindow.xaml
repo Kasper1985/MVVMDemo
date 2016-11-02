@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MVVMDemo"
         xmlns:views="clr-namespace:MVVMDemo.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="300" Width="500">
     <Grid>
         <!-- <views:StudentView x:Name="StudentViewControl" Loaded="StudentViewControl_Loaded"/> --><!-- From the first lesson -->
         <views:StudentView x:Name="StudentViewControl"/>
